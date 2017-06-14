@@ -1,0 +1,36 @@
+﻿@model Empty.Models.GuestResponse
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RsvpForm</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Main.css"/>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <label for="Name">Your Name</label>
+            @Html.TextBoxFor(x=> x.Name)
+            <label for="Email">Your Email</label> 
+            @Html.TextBoxFor(x => x.Email)
+            <label for="Phone">Your Phone</label>
+            @Html.TextBoxFor(x => x.Phone)
+            <label for="WillAttend">Will You attend</label>
+            @Html.DropDownListFor(x => x.WillAttend,
+             new[]
+             {
+                        new SelectListItem(){ Text = "Yes I'll be there",Value=bool.TrueString},
+                        new SelectListItem(){ Text = "No I can't come",Value=bool.FalseString}
+             }, "Choose an option")
+            <button type="submit"><span>Submit RSVP</span></button>
+        }
+</div>
+</body>
+</html>
